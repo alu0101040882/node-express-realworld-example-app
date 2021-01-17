@@ -33,7 +33,7 @@ if (!isProduction) {
 if(isProduction){
   mongoose.connect(process.env.MONGODB_URI);
 } else {
-  mongoose.connect('mongodb://localhost/conduit');
+  mongoose.connect('mongodb://192.168.32.2/conduit');
   mongoose.set('debug', true);
 }
 
@@ -79,6 +79,6 @@ app.use(function(err, req, res, next) {
 });
 
 // finally, let's start our server...
-var server = app.listen( process.env.PORT || 3000, function(){
+var server = app.listen( process.env.PORT || 3000, "0.0.0.0", function(){
   console.log('Listening on port ' + server.address().port);
 });
